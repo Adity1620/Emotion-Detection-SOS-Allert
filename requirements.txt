@@ -1,0 +1,5 @@
+streamlit
+soundfile
+numpy
+streamlit-audiorec
+openai-whisper
