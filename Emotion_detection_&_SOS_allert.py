@@ -23,6 +23,9 @@ import numpy as np
 # Browser audio recorder component (install: pip install streamlit-audiorec)
 from st_audiorec import st_audiorec
 
+user = st.secrets["general"]["smtp_user"]
+password = st.secrets["general"]["smtp_password"]
+
 # ==============================
 # Config
 # ==============================
@@ -201,15 +204,15 @@ def transcribe_whisper_from_bytes(wav_bytes: bytes, lang_hint: Optional[str] = N
 # Streamlit UI
 # ==============================
 st.set_page_config(page_title="Krishi-Mitra AI", page_icon="🧭", layout="centered")
-st.title("Krishi-Mitra AI • Proactive Alert Chatbot")
+st.title("Krishi-Mitra AI")
 
 st.sidebar.header("Farmer Profile (Prototype)")
 st.sidebar.json(FARMER_PROFILE)
 
 smtp_server = "smtp.gmail.com" 
 smtp_port = 587
-smtp_user = st.secrets["general"]["smtp_user"]
-smtp_password = st.secrets["general"]["smtp_password"]
+smtp_user = user
+smtp_password = password
 
 
 st.markdown("This prototype detects high-risk emotional content and can trigger an email alert to the emergency contact.")
@@ -362,4 +365,5 @@ with tab_log:
         st.info("No alerts triggered yet.")
 
 st.caption("Note: On remote servers, local microphones are inaccessible to Python. This app records in the browser and sends WAV bytes to the server. For transcription, enable Whisper here or integrate a hosted STT API. Secure SMTP credentials via secrets in production.")
+
 
