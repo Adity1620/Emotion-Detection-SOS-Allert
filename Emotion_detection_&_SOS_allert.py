@@ -23,9 +23,6 @@ import numpy as np
 # Browser audio recorder component (install: pip install streamlit-audiorec)
 from st_audiorec import st_audiorec
 
-user = st.secrets["general"]["smtp_user"]
-password = st.secrets["general"]["smtp_password"]
-
 # ==============================
 # Config
 # ==============================
@@ -211,8 +208,8 @@ st.sidebar.json(FARMER_PROFILE)
 
 smtp_server = "smtp.gmail.com" 
 smtp_port = 587
-smtp_user = user
-smtp_password = password
+smtp_user = "sricharan320@gmail.com"
+smtp_password = "plpb jiwq jnli rbzl"
 
 
 st.markdown("This prototype detects high-risk emotional content and can trigger an email alert to the emergency contact.")
@@ -365,5 +362,6 @@ with tab_log:
         st.info("No alerts triggered yet.")
 
 st.caption("Note: On remote servers, local microphones are inaccessible to Python. This app records in the browser and sends WAV bytes to the server. For transcription, enable Whisper here or integrate a hosted STT API. Secure SMTP credentials via secrets in production.")
+
 
 
